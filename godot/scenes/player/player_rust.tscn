@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://bsuc5b4bhyngw"]
+
+[ext_resource type="Texture2D" uid="uid://dc8xfen1smdfe" path="res://assets/CrabbySpriteSheet.png" id="1_6ooce"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8afob"]
+atlas = ExtResource("1_6ooce")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dovo2"]
+atlas = ExtResource("1_6ooce")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dovo2"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_8afob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dovo2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gmlin"]
+radius = 28.0
+height = 122.0
+
+[node name="PlayerRust" type="PlayerRust" unique_id=635057411]
+collision_layer = 2
+can_sleep = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=431108677]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_dovo2")
+autoplay = "default"
+frame_progress = 0.58858114
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1768397593]
+shape = SubResource("CapsuleShape2D_gmlin")

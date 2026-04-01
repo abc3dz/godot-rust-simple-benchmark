@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cusa0s0fl84it"]
+
+[ext_resource type="Script" uid="uid://bsylfeaqf7vrl" path="res://scenes/gd/gdscript.gd" id="1_ssxhm"]
+[ext_resource type="PackedScene" uid="uid://ex2swyky7qab" path="res://scenes/world/world.tscn" id="2_uprwv"]
+
+[node name="Game" type="Node2D" unique_id=377433161]
+script = ExtResource("1_ssxhm")
+
+[node name="World" parent="." unique_id=137473694 instance=ExtResource("2_uprwv")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1152118724]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1567484294]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48

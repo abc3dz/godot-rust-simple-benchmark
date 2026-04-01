@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://ex2swyky7qab"]
+
+[ext_resource type="Texture2D" uid="uid://ckb6unc3w2djf" path="res://assets/BG.png" id="1_dphjl"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sl2e5"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dphjl"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_1fp7r"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6m72w"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dphjl"]
+size = Vector2(1159, 611)
+
+[node name="World" type="StaticBody2D" unique_id=137473694]
+collision_mask = 2
+constant_linear_velocity = Vector2(-10, 0)
+
+[node name="Bg" type="Sprite2D" parent="." unique_id=2064250102]
+position = Vector2(579, 325)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("1_dphjl")
+
+[node name="Lower" type="CollisionShape2D" parent="." unique_id=1160384558]
+position = Vector2(0, 646)
+shape = SubResource("WorldBoundaryShape2D_sl2e5")
+
+[node name="Upper" type="CollisionShape2D" parent="." unique_id=1095377200]
+position = Vector2(0, 2)
+shape = SubResource("WorldBoundaryShape2D_dphjl")
+
+[node name="Left" type="CollisionShape2D" parent="." unique_id=824630502]
+position = Vector2(2, 329)
+shape = SubResource("WorldBoundaryShape2D_1fp7r")
+
+[node name="Right" type="CollisionShape2D" parent="." unique_id=1089282112]
+position = Vector2(1150, 337)
+shape = SubResource("WorldBoundaryShape2D_6m72w")
+
+[node name="Water" type="Area2D" parent="." unique_id=910802264]
+visible = false
+collision_mask = 2
+linear_damp_space_override = 1
+linear_damp = 2.0
+angular_damp_space_override = 1
+angular_damp = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Water" unique_id=141913935]
+position = Vector2(576, 349.5)
+shape = SubResource("RectangleShape2D_dphjl")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://i2uqbpw32evr"]
+
+[ext_resource type="PackedScene" uid="uid://ex2swyky7qab" path="res://scenes/world/world.tscn" id="1_rhtm2"]
+
+[node name="Game" type="GameManager" unique_id=485084138]
+
+[node name="World" parent="." unique_id=137473694 instance=ExtResource("1_rhtm2")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1152118724]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=869822089]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
