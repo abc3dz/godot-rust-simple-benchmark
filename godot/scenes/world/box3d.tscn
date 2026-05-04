@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cy0up51nih0ux"]
+
+[ext_resource type="PackedScene" uid="uid://chwkco1i5l5ws" path="res://assets/model/GodotToon2.glb" id="1_bwtbh"]
+[ext_resource type="Texture2D" uid="uid://ckb6unc3w2djf" path="res://assets/BG.png" id="2_mq3br"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oyhfb"]
+size = Vector3(1, 1, 0.42358398)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r37q8"]
+albedo_texture = ExtResource("2_mq3br")
+
+[node name="Box3D" type="Box3d" unique_id=1160755589]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1682859495]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=550187771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.032592773)
+shape = SubResource("BoxShape3D_oyhfb")
+
+[node name="GodotToon2" parent="RigidBody3D" unique_id=1505441987 instance=ExtResource("1_bwtbh")]
+
+[node name="Godot_Toon" parent="RigidBody3D/GodotToon2" index="0" unique_id=1659684696]
+surface_material_override/0 = SubResource("StandardMaterial3D_r37q8")
+
+[editable path="RigidBody3D/GodotToon2"]

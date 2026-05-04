@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://38skquyjkxjm"]
+
+[ext_resource type="PackedScene" uid="uid://cy0up51nih0ux" path="res://scenes/world/box3d.tscn" id="1_uuaaq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wyspg"]
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0w3kr"]
+size = Vector3(50, 0.5, 50)
+
+[sub_resource type="Gradient" id="Gradient_cm3f4"]
+colors = PackedColorArray(0.6431373, 0.4, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sbf46"]
+frequency = 0.09
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wuxha"]
+noise = SubResource("FastNoiseLite_sbf46")
+color_ramp = SubResource("Gradient_cm3f4")
+seamless = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wyspg"]
+albedo_color = Color(1, 1, 0.12156863, 1)
+albedo_texture = SubResource("NoiseTexture2D_wuxha")
+
+[node name="StartWorld" type="MainScene" unique_id=1068832273]
+box_scene = ExtResource("1_uuaaq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1408534128]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1577585899]
+shape = SubResource("BoxShape3D_wyspg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=515559938]
+mesh = SubResource("BoxMesh_0w3kr")
+surface_material_override/0 = SubResource("StandardMaterial3D_wyspg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1690987896]
+transform = Transform3D(0.4669732, 0.8842715, 0, -0.56911963, 0.30054528, 0.76535964, 0.6767857, -0.35740244, 0.64360285, 0, 5.969843, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=988262735]
+transform = Transform3D(1, 0, 0, 0, 0.85509294, 0.51847476, 0, -0.51847476, 0.85509294, 0, 9.357311, 16.433884)
+current = true
+size = 19.851
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=1946240144]
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1984542078]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=908595741]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
