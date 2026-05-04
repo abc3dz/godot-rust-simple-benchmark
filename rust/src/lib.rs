@@ -7,3 +7,6 @@ struct MyExtension;
 
 #[gdextension]
 unsafe impl ExtensionLibrary for MyExtension {}
+
+mod main_scene;
+mod box3d;
