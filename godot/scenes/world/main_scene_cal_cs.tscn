@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bud86y7i1pfib"]
+
+[ext_resource type="Script" uid="uid://bayyylcpm2yvx" path="res://scenes/world/MainSceneCalCs.cs" id="1_xsdp4"]
+
+[node name="StartWorld" type="Node" unique_id=1113370128]
+script = ExtResource("1_xsdp4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1690987896]
+transform = Transform3D(0.4669732, 0.8842715, 0, -0.56911963, 0.30054528, 0.76535964, 0.6767857, -0.35740244, 0.64360285, 0, 5.969843, 0)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=988262735]
+transform = Transform3D(1, 0, 0, 0, 0.85509294, 0.51847476, 0, -0.51847476, 0.85509294, 0, 17.02385, 16.433884)
+current = true
+size = 19.851
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1984542078]
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=908595741]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
