@@ -7,49 +7,36 @@ extends Node
 
 var spawned_count: int = 0
 
-
 func _ready():
 	spawned_count = 0
-
-
-# ถ้าจะใช้ input แบบเดิม
-# func _unhandled_input(event):
-#     if event.is_action_pressed("ui_accept"):
-#         var box3d = box_scene.instantiate()
-#         box3d.position = Vector3(
-#             randi_range(-5, 5),
-#             randi_range(3, 5),
-#             randi_range(-5, 5)
-#         )
-#         add_child(box3d)
+	spawn_box()
 
 
 func spawn_box():
-	var width = 10
-	var height = 8
-	var spacing = 1.0
+	var spawn_amount = 5000
 
-	for y in range(height):
-		for x in range(-5, width):
-			
-			var box3d = box_scene.instantiate()
+	if box_scene == null:
+		push_error("Box scene not assigned!")
+		return
 
-			spawned_count += 80
+	for i in range(spawn_amount):
+		var box_instance = box_scene.instantiate()
 
-			var pos = Vector3(
-				x * spacing,
-				y * spacing,
-				0.0
-			)
+		var pos = Vector3(
+			randi_range(-20, 20),
+			randi_range(10, 30),
+			randi_range(-20, 20)
+		)
 
-			box3d.position = pos
+		box_instance.position = pos
 
-			add_child(box3d)
+		add_child(box_instance)
 
-	print("Spawned %s boxes!" % spawned_count)
+		spawned_count += 1
 
+	# อัปเดต UI
 	var fps = Engine.get_frames_per_second()
-	var text = "Gdscript\nFPS: %s\nSpawn Count: %s" % [fps, spawned_count]
+	var text = "Language: GDScript\nFPS: %d\nObjects: %d" % [fps, spawned_count]
 	ui_label.text = text
 
 
