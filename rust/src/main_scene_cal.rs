@@ -1,18 +1,21 @@
 use godot::prelude::*;
-use godot::classes::{Node, Label, Time};
+use godot::classes::{Node, Label, Time, Timer, Engine};
 
 #[derive(GodotClass)]
 #[class(init, base=Node)]
 pub struct MainSceneCal {
     #[init(node = "CanvasLayer/Label")]
     ui_label: OnReady<Gd<Label>>,
-
+    #[init(node = "EventTimer")]
+    event_timer: OnReady<Gd<Timer>>,
+    result_count: f32,
     base: Base<Node>,
 }
 
 #[godot_api]
 impl INode for MainSceneCal {
     fn ready(&mut self) {
+        self.result_count = 0.0;
         self.run_benchmark();
     }
 }
@@ -47,17 +50,22 @@ impl MainSceneCal {
                 let ny = vy / length;
                 let nz = vz / length;
                 result += (nx*nx + ny*ny + nz*nz).sqrt();
+                self.result_count += result as f32;
             }
         }
 
         let end = Time::singleton().get_ticks_msec();
         let duration = end - start;
-
+        let fps = Engine::singleton().get_frames_per_second();
         let text = format!(
-            "Language: Rust\nTime: {} ms\nResult: {}",
-            duration, result
+            "Language: Rust\nTime: {} ms\nResult: {}\nFPS: {:.0}",
+            duration, self.result_count, fps
         );
 
         self.ui_label.set_text(&text);
+    }
+    #[func]
+    fn _on_event_timer_timeout(&mut self) {
+        self.run_benchmark();
     }
 }
