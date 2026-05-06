@@ -2,9 +2,9 @@ My simple benchmark results (from someone not very experienced with programming 
 
 I forked a benchmark project from Rayato159 and tested Godot performance using Rust, C#, and GDScript.
 
-Spawning 5,000 objects at a time
+## Spawning 5,000 objects at a time
 → C# performed the best.
-Running a heavy calculation (5 million iterations per run)
+## Running a heavy calculation (5 million iterations per run)
 → C# also performed the best when using the Godot API.
 
 Then I wanted to understand where Rust performs better, so I switched to pure Rust computation (without calling Godot APIs).
